@@ -12,10 +12,12 @@
  ************************************************************/
 
 /***************************************************************
+ Name: sieve
  
- Use: 
+ Use: Applies logic of Sieve of Eratoshenes algorithm. 
 
- Parameters: 
+ Parameters: A constant reference to a set s, a constant integer
+ lower, and a constant integer upper.
 
  Returns: None. 
 
@@ -24,23 +26,26 @@ void sieve( set<int>& s, const int lower, const int upper) {
 }
 
 /***************************************************************
+ Name: print_primes
  
- Use: 
+ Use: This prints elements of a set. 
 
- Parameters: 
+ Parameters: A reference to a constant set s, a constant integer
+ lower, and a constant integer upper.
 
  Returns: None. 
 
  ***************************************************************/
-
 void print_primes( const set<int>& s, const int lower, const int upper) {
 }
 
 /***************************************************************
+ Name: run_game
  
- Use: 
+ Use: Takes input from user, invokes other functions sieve and
+ print_primes. This will loop until user says stop.
 
- Parameters: 
+ Parameters: A reference to a set s. 
 
  Returns: None. 
 
