@@ -33,7 +33,28 @@ using std::setw;
  ***************************************************************/
 void sieve( set<int>& s, const int lower, const int upper)
 {
+    // integer p is greater than 1
+    // it can only be divisible by 1 and itself
+    // initialize a set to store all the integers in the range lower to uppper
+    // Note that the smallest prime number is 2. IF the value of lower is less than 2 adjust for that.
+    // Loop through the set. 
+    //
+    //
+    // Guessing I will need to generate all the numbers and populate them into the set?
 
+    set<int>iterator it;
+
+    int m = 2;
+
+    for (it = s.begin(); it < s.end(); it++)
+    {
+        if( it % 2 == 0)
+        {
+        }
+    } 
+
+    // begin with integer m = 2 which is the smallest prime number
+    // the pass scans tehs et and removes alll multiples of two.
 }
 
 /***************************************************************
