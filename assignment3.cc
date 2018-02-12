@@ -52,7 +52,7 @@ void sieve( set<int>& s, const int lower, const int upper)
         }
         else if( *it % m == 0 && m <= sqrt(upper))
         {
-            s.erase(*it);
+            s.erase(it);
         }
 
         m++;
@@ -79,11 +79,14 @@ void print_primes( const set<int>& s, const int lower, const int upper)
     set<int>::const_iterator it;
     for (it = s.begin(); it != s.end(); it++)
     {
+        int counter = 0;
         cout << setw(ITEM_W) << *it;
-        if ((it - s.begin()) % NO_ITEMS == 9)
+        if ((counter) % NO_ITEMS == 9)
         { 
             cout << endl;
         }
+
+        counter++;
     }
 
 }
@@ -137,7 +140,7 @@ void run_game(set<int>& s)
         sieve(s, stoi(lower), stoi(upper)); 
 
         // call print function
-        print_primes(s, stoi(lower), stoi(upper));
+        //print_primes(s, stoi(lower), stoi(upper));
 
     }
 }
