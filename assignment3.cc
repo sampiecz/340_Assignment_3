@@ -55,9 +55,9 @@ void sieve( set<int>& s, const int lower, const int upper)
             s.erase(*it);
         }
 
+        m++;
     } 
 
-    m++;
 }
 
 /***************************************************************
@@ -131,12 +131,7 @@ void run_game(set<int>& s)
             lower = upperAndLowerInput.substr(splitStringHere +1, upperAndLowerInput.size());
         }
 
-        // make that set actually have stuff in it yeah boiiii
-        for(int i = stoi(lower); i < stoi(upper); i++)
-        {
-            // waddup TA I'm inserting a number into a set
-            s.insert(i);
-        }
+        s.insert(stoi(lower), stoi(upper));
 
         // call sieve function
         sieve(s, stoi(lower), stoi(upper)); 
