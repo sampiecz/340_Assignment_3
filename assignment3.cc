@@ -52,7 +52,18 @@ void sieve( set<int>& s, const int lower, const int upper)
         }
         else if( *it % m == 0 && m <= sqrt(upper))
         {
+            /*cout << "#########" << endl;
+            cout << "Not prime" << endl;
+            cout << *it << endl;
+            cout << "#########" << endl; */
             s.erase(it);
+        }
+        else
+        {
+            /* cout << "#########" << endl;
+            cout << "Prime" << endl;
+            cout << *it << endl;
+            cout << "#########" << endl; */
         }
 
         m++;
@@ -77,11 +88,14 @@ void print_primes( const set<int>& s, const int lower, const int upper)
     const int ITEM_W = 4;
     const int NO_ITEMS = 6;
     set<int>::const_iterator it;
+
+    cout << "\nThere are " << s.size() << " prime numbers between " << lower << " and " << upper << ": " << endl;
+
     for (it = s.begin(); it != s.end(); it++)
     {
         int counter = 0;
         cout << setw(ITEM_W) << *it;
-        if ((counter) % NO_ITEMS == 9)
+        if (counter % NO_ITEMS == 5)
         { 
             cout << endl;
         }
@@ -131,10 +145,10 @@ void run_game(set<int>& s)
         // call print function
         print_primes(s, lower, upper);
 
-        cout << "\nContinue? (Y/n) : ";
+        cout << "\n\nDo you want to continue or not? Please answer yes or no and hit enter: ";
         cin >> inputStopOrStart;
 
-        if (inputStopOrStart == "Y")
+        if (inputStopOrStart == "yes")
         {
             // continue the loop
             stopOrStart = true;
