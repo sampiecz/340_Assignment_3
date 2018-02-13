@@ -110,39 +110,45 @@ void run_game(set<int>& s)
     {
 
         // instantiate strings
-        string upperAndLowerInput;
-        string upper;
-        string lower;
+        string inputStopOrStart;
+        int upper;
+        int lower;
         
         // get upper value 
         cout << "Please input lower bound and upper bound and hit enter (e.g. 10 100): ";
-        cin >> upperAndLowerInput;
+        cin >> lower;
+        cin >> upper;
 
-        // no means no
-        if (upperAndLowerInput == "q")
+        // make the set
+        for(int i = lower; i <= upper; i++)
         {
-            stopOrStart = false; 
+            s.insert(i);
+        }
+
+        // call sieve function
+        sieve(s, lower, upper); 
+
+        // call print function
+        print_primes(s, lower, upper);
+
+        cout << "\nContinue? (Y/n) : ";
+        cin >> inputStopOrStart;
+
+        if (inputStopOrStart == "Y")
+        {
+            // continue the loop
+            stopOrStart = true;
+
+            // make sure to clear the set
+            s.clear();
         }
         else
         {
-            // here is where I should split the string into upper and lower
-            // that way I can pass them into the function
-            // they will need to be converted into ints
-
-            int splitStringHere = upperAndLowerInput.find(" ");
-            upper = upperAndLowerInput.substr(0, splitStringHere);
-            lower = upperAndLowerInput.substr(splitStringHere +1, upperAndLowerInput.size());
+            // exit out of the loop
+            stopOrStart = false;
         }
 
-        s.insert(stoi(lower), stoi(upper));
-
-        // call sieve function
-        sieve(s, stoi(lower), stoi(upper)); 
-
-        // call print function
-        //print_primes(s, stoi(lower), stoi(upper));
-
-    }
+    };
 }
 
 int main() {
