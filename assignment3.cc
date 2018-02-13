@@ -40,35 +40,17 @@ using std::sqrt;
  ***************************************************************/
 void sieve( set<int>& s, const int lower, const int upper)
 {
-    set<int>::iterator it;
-
-    int m = 2;
-
-    for (it = s.begin(); it != s.end(); it++)
-    {
-        if( *it == 1 )
-        {
-            continue;
-        }
-        else if( *it % m == 0 && m <= sqrt(upper))
-        {
-            /*cout << "#########" << endl;
-            cout << "Not prime" << endl;
-            cout << *it << endl;
-            cout << "#########" << endl; */
-            s.erase(it);
-        }
-        else
-        {
-            /* cout << "#########" << endl;
-            cout << "Prime" << endl;
-            cout << *it << endl;
-            cout << "#########" << endl; */
-        }
-
-        m++;
-    } 
-
+	for(int m = 2; m*m <= upper; m++)
+	{
+		set<int>::iterator it;
+		for(it = s.begin(); it != s.end(); it++)
+		{
+			if(*it % m == 0 && m != *it)
+			{
+				s.erase(it);
+			}
+		}
+	}
 }
 
 /***************************************************************
@@ -91,9 +73,9 @@ void print_primes( const set<int>& s, const int lower, const int upper)
 
     cout << "\nThere are " << s.size() << " prime numbers between " << lower << " and " << upper << ": " << endl;
 
+    int counter = 0;
     for (it = s.begin(); it != s.end(); it++)
     {
-        int counter = 0;
         cout << setw(ITEM_W) << *it;
         if (counter % NO_ITEMS == 5)
         { 
@@ -132,6 +114,12 @@ void run_game(set<int>& s)
         cout << "Please input lower bound and upper bound and hit enter (e.g. 10 100): ";
         cin >> lower;
         cin >> upper;
+
+        // check if lower is less than two
+        if (lower < 2)
+        {
+            lower = 2;
+        }
 
         // make the set
         for(int i = lower; i <= upper; i++)
